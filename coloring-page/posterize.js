@@ -1,4 +1,4 @@
-const { runKeySequence, pasteString } = require('./keyboard-funct');
+const { runKeySequence, pasteString } = require('../keyboard-funct');
 
 const zoomOut = [
     'f10',

@@ -1,6 +1,6 @@
 const { readSync: clipRead, writeSync: clipWrite } = require('clipboardy');
-const { runKeySequence, pasteString } = require('./keyboard-funct');
-const { CUT_ALL, SELECT_ALL } = require('./keyboard-actions');
+const { runKeySequence, pasteString } = require('../keyboard-funct');
+const { CUT_ALL, SELECT_ALL } = require('../keyboard-actions');
 
 exports.exportImages = () => {
     const EXPORT = ['shift', 'control', 'e'];

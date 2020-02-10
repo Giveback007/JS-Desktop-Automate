@@ -6,7 +6,7 @@
 const ioHook = require('iohook');
 const { posterize } = require('./posterize');
 const { exportImages } = require('./export-images');
-const { runKeySequence } = require('./keyboard-funct');
+const { runKeySequence } = require('../keyboard-funct');
  
 ioHook.on('keyup', e => {
     // control + ` // TOGGLE

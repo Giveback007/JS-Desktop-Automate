@@ -1,5 +1,5 @@
 const robot = require("robotjs");
-const { arrGen, getType, isType, wait } = require('./utils');
+const { arrGen, getType, isType } = require('@giveback007/util-lib');
 const { PASTE } = require('./keyboard-actions');
 const { writeSync: clipWrite } = require('clipboardy');
 
@@ -39,6 +39,7 @@ const runKeySequence = (seq) => {
 
     seq.forEach(async (x) => {
         switch (getType(x)) {
+            // number -> wait(ms)
             case 'number':
                 keyboardWait(x);
                 robot.keyTap('audio_vol_down');
@@ -46,12 +47,17 @@ const runKeySequence = (seq) => {
                 robot.keyTap('audio_vol_up');
                 robot.setKeyboardDelay(5);
                 return;
+            // string -> keyTap
             case 'string':
                 return keyTap(x);
+            // array -> hotkey
             case 'array':
                 return hotKey(x);
+            // function -> ' "f" that returns a sequence'
             case 'function':
                 return runKeySequence(x());
+            // object -> 'allows for extra options'
+            // { times: number }
             case 'object':
                 switch (x.type) {
                     case 'string':
