@@ -1,20 +1,10 @@
 import { runKeySequence, pasteString } from '../auto-keyboard/keyboard-funct';
+import { zoom } from './util';
 
-const zoomOut = [
-    'f10',
-    'v',
-    'z',
-    'up',
-    'enter',
-    { type: 'keytap', val: 'tab', times: 2 },
-    pasteString('20'),
-    'enter',
-    ['shift', 'j']
-];
+const zoomOut: KeyB_SeqItem[] = zoom(20);
 
-const scaleImage = [
-    'f10',
-    'i',
+const scaleImage: KeyB_SeqItem[] = [
+    ['alt', 'i'],
     's',
     pasteString('5100'),
     'enter',
@@ -22,10 +12,9 @@ const scaleImage = [
     'enter'
 ];
 
-const canvasSize = [
+const canvasSize: KeyB_SeqItem[] = [
     5000,
-    'f10',
-    'i',
+    ['alt', 'i'],
     'v',
     { type: 'keytap', val: 'tab', times: 2 },
     pasteString('6600'),
@@ -36,25 +25,22 @@ const canvasSize = [
     'enter',
 ];
 
-const flattenImage = [
-    'f10',
-    'i',
+const flattenImage: KeyB_SeqItem[] = [
+    ['alt', 'i'],
     'f'
 ];
 
-const grayscale = [
+const grayscale: KeyB_SeqItem[] = [
     500,
-    'f10',
-    'i',
+    ['alt', 'i'],
     'm',
     'down',
     'enter',
 ];
 
-const colorLevels = [
+const colorLevels: KeyB_SeqItem[] = [
     500,
-    'f10',
-    'c',
+    ['alt', 'c'],
     'l',
     { type: 'keytap', val: 'tab', times: 8 },
     pasteString('50'),
@@ -62,10 +48,9 @@ const colorLevels = [
     'enter'
 ]
 
-const _posterize = [
+const _posterize: KeyB_SeqItem[] = [
     500,
-    'f10',
-    'c',
+    ['alt', 'c'],
     'p',
     'down',
     { type: 'keytap', val: 'tab', times: 6 },

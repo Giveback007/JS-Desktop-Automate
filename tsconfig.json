@@ -14,6 +14,7 @@
         "pretty": true, /* Stylize errors and messages using color and context (experimental). */
         "removeComments": true, /* Do not emit comments to output. */
         "jsx": "react", /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+        "downlevelIteration": true,
 
         /* -- Strict Type-Checking Options -- */
         "alwaysStrict": true, /* Parse in strict mode and emit "use strict" for each source file. */

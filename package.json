@@ -4,7 +4,8 @@
   "description": "",
   "main": "abc.js",
   "scripts": {
-    "start": "ts-node-dev --clear --watch --inspect=9090 --files universal-paperclips/run.ts",
+    "start-gimp": "ts-node-dev --clear --watch --inspect=9090 --files gimp/run.ts",
+    "start-universal-paperclips": "ts-node-dev --clear --watch --inspect=9090 --files universal-paperclips/run.ts",
     "chrome": "chrome.bat",
     "auto-clicker": "node clicker/run.js"
   },
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@types/node": "^13.9.2",
     "@types/puppeteer": "^2.0.1",
+    "ts-key-enum": "^2.0.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
   }

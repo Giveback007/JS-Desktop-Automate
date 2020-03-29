@@ -1,5 +1,5 @@
-const ioHook = require('iohook');
-const { runKeySequence, pasteString } = require('../keyboard-funct');
+import ioHook from 'iohook';
+import { runKeySequence } from '../auto-keyboard/keyboard-funct';
 
 ioHook.on('keyup', e => {
     if (e.keycode === 41) {
