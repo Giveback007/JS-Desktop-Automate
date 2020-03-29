@@ -1,11 +1,11 @@
-const { readSync: clipRead, writeSync: clipWrite } = require('clipboardy');
-const { runKeySequence, pasteString } = require('../keyboard-funct');
-const { CUT_ALL, SELECT_ALL } = require('../keyboard-actions');
+import { readSync as clipboardRead, writeSync as writeToClipboard } from 'clipboardy';
+import { runKeySequence, pasteString } from '../auto-keyboard/keyboard-funct';
+import { CUT_ALL, SELECT_ALL } from '../auto-keyboard/keyboard-actions';
 
 exports.exportImages = () => {
     const EXPORT = ['shift', 'control', 'e'];
-    const changeName = (ext) => () => {
-        const name = clipRead().split('.')[0];
+    const changeName = (ext: string) => () => {
+        const name = clipboardRead().split('.')[0];
         return pasteString(name + ext);
     };
 

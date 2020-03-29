@@ -1,3 +1,5 @@
+type Dict<T> = { [id: string]: T; };
+
 type ioHookEvents = 
     | 'keypress'
     | 'mousemove'
@@ -8,5 +10,3 @@ type ioHookEvents =
     | 'mouseup'
     | 'mousedrag'
     | 'mousewheel'
-
-

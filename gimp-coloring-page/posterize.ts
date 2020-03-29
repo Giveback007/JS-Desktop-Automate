@@ -1,4 +1,4 @@
-const { runKeySequence, pasteString } = require('../keyboard-funct');
+import { runKeySequence, pasteString } from '../auto-keyboard/keyboard-funct';
 
 const zoomOut = [
     'f10',
@@ -62,7 +62,7 @@ const colorLevels = [
     'enter'
 ]
 
-const posterize = [
+const _posterize = [
     500,
     'f10',
     'c',
@@ -72,7 +72,7 @@ const posterize = [
     'enter'
 ]
 
-exports.posterize = () => {
+export const posterize = () => {
     runKeySequence([
         ...zoomOut,
         ...scaleImage,
@@ -80,6 +80,6 @@ exports.posterize = () => {
         ...flattenImage,
         ...grayscale,
         ...colorLevels,
-        ...posterize
+        ..._posterize
     ]);
 }

@@ -3,10 +3,10 @@
 // http://robotjs.io/docs/syntax
 // https://devstore.io/js/iohook
 
-const ioHook = require('iohook');
-const { posterize } = require('./posterize');
-const { exportImages } = require('./export-images');
-const { runKeySequence } = require('../keyboard-funct');
+import ioHook from 'iohook'
+import { posterize } from './posterize'
+import { exportImages } from './export-images'
+import { runKeySequence } from '../auto-keyboard/keyboard-funct'
  
 ioHook.on('keyup', e => {
     // control + ` // TOGGLE

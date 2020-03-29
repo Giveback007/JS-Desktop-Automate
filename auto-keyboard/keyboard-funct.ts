@@ -1,47 +1,48 @@
-const robot = require("robotjs");
-const { arrGen, getType, isType } = require('@giveback007/util-lib');
-const { PASTE } = require('./keyboard-actions');
-const { writeSync: clipWrite } = require('clipboardy');
+import robot from "robotjs";
+// import { arrGen, getType, isType } from '@giveback007/util-lib';
+import { PASTE } from './keyboard-actions';
+import { writeSync as writeToClipboard } from 'clipboardy';
+import { isType, type, arrGen } from '@giveback007/util-lib';
 
-const hotKey = (keyArr) => {
+const hotKey = (keyArr: string[]) => {
     console.log('HOTKEY:', keyArr.join(' + '));
 
-    keyArr.forEach(key => {
+    keyArr.forEach((key: string) => {
         robot.keyToggle(key, 'down');
         robot.setKeyboardDelay(5);
     });
 
-    keyArr.forEach(key => robot.keyToggle(key, 'up'));    
+    keyArr.forEach((key: string) => robot.keyToggle(key, 'up'));    
 }
 
-const keyTap = (key) => {
+const keyTap = (key: string) => {
     console.log('KEYTAP:', key);
 
     robot.keyTap(key)
     robot.setKeyboardDelay(5);
 }
 
-const typeString = (str) => {
+const typeString = (str: string) => {
     console.log('STRING:', str);
 
     robot.typeString(str);
     robot.setKeyboardDelay(5);
 }
 
-const keyboardWait = (ms) => {
+const keyboardWait = (ms: number) => {
     console.log('WAIT-T:', ms);
 
     robot.setKeyboardDelay(ms);
 }
 
-const runKeySequence = (seq) => {
+export const runKeySequence = (seq: string | (string | number | string[])[]) => {
     seq = isType(seq, 'array') ? seq : [seq];
 
     seq.forEach(async (x) => {
-        switch (getType(x)) {
+        switch (type(x)) {
             // number -> wait(ms)
             case 'number':
-                keyboardWait(x);
+                keyboardWait(x as number);
                 robot.keyTap('audio_vol_down');
                 robot.setKeyboardDelay(5);
                 robot.keyTap('audio_vol_up');
@@ -49,7 +50,7 @@ const runKeySequence = (seq) => {
                 return;
             // string -> keyTap
             case 'string':
-                return keyTap(x);
+                return keyTap(x as string);
             // array -> hotkey
             case 'array':
                 return hotKey(x);
@@ -77,14 +78,9 @@ const runKeySequence = (seq) => {
     });
 }
 
-const pasteString = (str) => () => {
+export const pasteString = (str: string) => () => {
     console.log('CLIP-W:', str);
 
-    clipWrite(str); 
+    writeToClipboard(str); 
     return [PASTE];
-}
-
-module.exports = {
-    runKeySequence,
-    pasteString,
 }
