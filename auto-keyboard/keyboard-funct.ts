@@ -94,10 +94,10 @@ export const runKeySequence = (seq: KeyB_Fct | KeyB_SeqItem[]) => {
     });
 }
 
-export const pasteString = (str: string): KeyB_Fct => () => {
+export const pasteString = (str: string | number): KeyB_Fct => () => {
     console.log('CLIP-W:', str);
 
-    writeToClipboard(str); 
+    writeToClipboard(str + ''); 
     // seq[][] -> 'hotkey' ||| if string[] -> 'keytap'
     return [PASTE];
 }

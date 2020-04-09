@@ -5,24 +5,28 @@
 
 import ioHook from 'iohook';
 import { runKeySequence } from '../auto-keyboard/keyboard-funct';
-import { zoom } from './util';
-import { addBorder } from './add-border';
+import { log } from 'console';
 import { exportImages } from './export-images';
 
-ioHook.registerShortcut([56, 41], () => {
-    // const tabs = 1; // number of tabs
-    const tabs = 24;
+
+// CLICK ON TAB when tabbing
+ioHook.registerShortcut([56, 41], () => { // alt + `
+    log('START SEQUENCE');
+    const tabs = 1; // number of tabs
+    // const tabs = 22 - 6; // full 360* -> n of files
     runKeySequence(['m']);
     for (let i = 0; i < tabs; i++) {
-        runKeySequence([['control', 'alt', 'pagedown']])  
-        // exportImages();
+        exportImages('listing');
+        runKeySequence([['control', 'alt', 'pagedown']]);
         // runKeySequence(['m']);
         // addBorder();
         // runKeySequence(zoom(66));
-        runKeySequence([['control', 's'], 500]);
+        // runKeySequence([['control', 's'], 500]);
         // posterize();
+        // resizeLayer();
     }
     // runKeySequence(['t']);
 });
 
 ioHook.start();
+

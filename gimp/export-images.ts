@@ -2,7 +2,11 @@ import { readSync as clipboardRead } from 'clipboardy';
 import { runKeySequence, pasteString } from '../auto-keyboard/keyboard-funct';
 import { CUT_ALL } from '../auto-keyboard/keyboard-actions';
 
-export const exportImages = () => {
+/**
+ * @example midExt = "wm" -> "name.wm.jpg" && "name.wm.pdf"
+*/
+export const exportImages = (midExt: string = '') => {
+    midExt = midExt ? '.' + midExt : '';
 
     const EXPORT = ['shift', 'control', 'e'];
     const changeName = (ext: string): KeyB_Fct => () => {
@@ -31,10 +35,10 @@ export const exportImages = () => {
         'enter',
     ];
 
-    const logoJpg: KeyB_SeqItem[] = jpgSequence('.wm');
-    const logoPdf: KeyB_SeqItem[] = pdfSequence('.wm');
-    const jpg: KeyB_SeqItem[] = jpgSequence();
-    const pdf: KeyB_SeqItem[] = pdfSequence();
+    const logoJpg: KeyB_SeqItem[] = jpgSequence(midExt);
+    const logoPdf: KeyB_SeqItem[] = pdfSequence(midExt);
+    // const jpg: KeyB_SeqItem[] = jpgSequence();
+    // const pdf: KeyB_SeqItem[] = pdfSequence();
 
     runKeySequence([
         ...logoJpg,
