@@ -15,7 +15,14 @@ const evaluate = (page: Page) => async <
     (ids as ID[]).forEach((id) => obj[id] = nId(id));
     Object.keys(idsMap as T).forEach((key) => (obj as any)[key] = nId(idsMap[key]));
 
-    return obj;
+    const addObj = { spareTrust: false } as { spareTrust: boolean };
+
+    const addMem = document.getElementById('btnAddMem');
+    // const = document.getElementById('megaClipperDiv');
+    if (addMem) addObj.spareTrust = !(addMem as HTMLButtonElement).disabled;
+    
+    
+    return Object.assign({}, obj, addObj);
 }, ids, idsMap);
 
 export const apiInit = (page: Page) => ({

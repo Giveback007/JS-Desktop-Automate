@@ -6,5 +6,14 @@ type Stats = {
     topWirePrice: number,
     startTime: number
     $spent: number,
-    avgSales: number,
+    // avgSales: number,
+}
+
+type TargetPurchase = 'wire' | 'auto' | 'marketing'
+
+type MetaData = {
+    futureClips: number,
+    targetCost: number,
+    secondsTill0: number,
+    targetPurchase: TargetPurchase,
 }

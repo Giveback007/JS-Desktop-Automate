@@ -7,7 +7,7 @@
     "start-gimp": "ts-node-dev --clear --watch --inspect=9090 --files gimp/run.ts",
     "start-universal-paperclips": "ts-node-dev --clear --watch --inspect=9090 --files universal-paperclips/run.ts",
     "chrome": "chrome.bat",
-    "auto-clicker": "node clicker/run.js"
+    "auto-clicker": "ts-node-dev auto-clicker.ts"
   },
   "author": "",
   "license": "ISC",

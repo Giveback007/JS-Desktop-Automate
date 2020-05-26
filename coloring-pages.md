@@ -50,3 +50,15 @@ runKeySequence([
 exportImages('listing');
 ```
 ---
+
+REDONE:
+
+- crop
+- canvas size
+	* 5100 x 6600
+	* center
+- image -> fatten image
+- image -> mode -> grayscale
+- colors -> levels 
+	* input levels | gamma [1.35]
+- colors -> posterize
